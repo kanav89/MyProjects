@@ -4,6 +4,7 @@ class Employeelist extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            updated: false,
             employees: [],
             IsApiError: false
         }
@@ -14,7 +15,8 @@ class Employeelist extends React.Component {
             .then(
                 (result) => {
                     this.setState({
-                        employees: result
+                        employees: result,
+                        updated: true
                     });
                 },
                 (error) => {
@@ -24,28 +26,38 @@ class Employeelist extends React.Component {
     }
     render() {
         var employeeslist = this.state.employees;
-        // debugger;
-        if (employeeslist && employeeslist.length > 0) {
-            return (<div>
-                <h2>contributions Component</h2>
-                <table className="table" >
-                    <thead>
-                        <tr>
-                            <th>Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         {employeeslist.map(emp => (
-                            <tr key={emp}>
-                                <td>{emp}</td>
+        if (employeeslist && this.state.updated) {
+            if (employeeslist.length === 0) {
+                return (<div>
+                    <h2>Contributions</h2>
+                    No Record Found
+                    </div>)
+            }
+            else {
+                return (<div>
+                    <h2>Contributions</h2>
+                    <table className="table" >
+                        <thead>
+                            <tr>
+                                <th>Count</th>
                             </tr>
-                        ))} 
-                    </tbody>
-                </table>
-            </div>)
+                        </thead>
+                        <tbody>
+                            {employeeslist.map(emp => (
+                                <tr key={emp}>
+                                    <td>{emp}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>)
+            }
         }
         else {
-            return (<div>No Record Found</div>)
+            return (<div>
+                <h2>Contributions</h2>
+                Fetching records...
+            </div>)
         }
     }
 }
