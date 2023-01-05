@@ -4,10 +4,6 @@ class InputList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username :'',
-            token:'',
-            start:'',
-            end:'',
             updated: false
         }
         this.handleChange = this.handleChange.bind(this);
@@ -18,32 +14,26 @@ class InputList extends React.Component {
   }
     render() {
         return (<div>
-                    <form>
+<form>
   <label>
     Username:
-    <input type="text" name="username" onChange={(event)=>this.handleChange(event, "username")}/>
+    <input type="text" name="username" value={this.props.u} onChange={(event)=>this.props.su("somenewusername")}/>
   </label>
-  
-</form><form>
   <label>
     Token:
-    <input type="text" name="token" onChange={(event)=>this.handleChange(event, "token")} />
+    <input type="text" name="token" value={this.props.t} onChange={(event)=>this.handleChange(event, "token")} />
   </label>
-  
-</form><form>
   <label>
     Start_date:
-    <input type="text" name="start" onChange={(event)=>this.handleChange(event, "start")} />
+    <input type="text" name="start" value={this.props.s} onChange={(event)=>this.handleChange(event, "start")} />
   </label>
-  
-</form><form>
   <label>
     End_date:
-    <input type="text" name="end" onChange={(event)=>this.handleChange(event, "end")} />
+    <input type="text" name="end" value={this.props.e} onChange={(event)=>this.handleChange(event, "end")} />
   </label>
-  
   <input type="submit" value="Submit" />
-</form></div>)
+</form>
+</div>)
     }
 }
 export default InputList;

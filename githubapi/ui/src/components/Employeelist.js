@@ -11,19 +11,19 @@ class Employeelist extends React.Component {
         }
     }
     componentDidMount() {
-        fetch(" http://127.0.0.1:5000/contributions?username=Vansh-Coder&token=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&start_date=2021-12-28&end_date=2022-12-28")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        employees: result,
-                        updated: true
-                    });
-                },
-                (error) => {
-                    this.setState({ IsApiError: true });
-                }
-            )
+        fetch(" http://127.0.0.1:5000/contributions?username=".concat(this.props.u).concat("&token=").concat(this.props.t).concat("&start_date=").concat(this.props.s).concat("&end_date=").concat(this.props.e))
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({
+                    employees: result,
+                    updated: true
+                });
+            },
+            (error) => {
+                this.setState({ IsApiError: true });
+            }
+        )
     }
     render() {
         var employeeslist = this.state.employees;
