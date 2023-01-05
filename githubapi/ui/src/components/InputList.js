@@ -1,4 +1,5 @@
 import React from 'react';
+//useContext
 
 class InputList extends React.Component {
     constructor(props) {
@@ -18,14 +19,29 @@ class InputList extends React.Component {
     Username:
     <input type="text" name="username" value={this.props.u} onChange={(event)=>this.props.su(event.target.value)}/>
   </label>
+<<<<<<< Updated upstream
+=======
+  
+
+>>>>>>> Stashed changes
   <label>
     Token:
     <input type="text" name="token" value={this.props.t} onChange={(event) => this.props.st(event.target.value)} />
   </label>
+<<<<<<< Updated upstream
+=======
+  
+
+>>>>>>> Stashed changes
   <label>
     Start_date:
     <input type="text" name="start" value={this.props.s} onChange={(event) => this.props.ss(event.target.value)} />
   </label>
+<<<<<<< Updated upstream
+=======
+  
+
+>>>>>>> Stashed changes
   <label>
     End_date:
     <input type="text" name="end" value={this.props.e} onChange={(event) => this.props.se(event.target.value)} />
