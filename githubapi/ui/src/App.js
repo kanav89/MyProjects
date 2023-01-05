@@ -17,7 +17,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
             </header>
-            <InputList u={username} su={setUsername} t={token} s={startdate} e={enddate} />
+            <InputList u={username} su={setUsername} t={token} st={setToken} s={startdate} ss={setStartdate} e={enddate} se={setEnddate}/>
             <Employeelist u={username} t={token} s={startdate} e={enddate} />
         </div>
     );
