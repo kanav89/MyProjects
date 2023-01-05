@@ -1,4 +1,5 @@
 import React from 'react';
+import './InputList.js';
 
 class Employeelist extends React.Component {
     constructor(props) {
