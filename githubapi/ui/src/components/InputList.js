@@ -17,19 +17,19 @@ class InputList extends React.Component {
 <form>
   <label>
     Username:
-    <input type="text" name="username" value={this.props.u} onChange={(event)=>this.props.su(event.target.value)}/>
+    <input type="text" name="username" value={this.props.u} onChange={(event)=>this.handleChange(event,this.props.su(event.target.value))}/>
   </label>
   <label>
     Token:
-    <input type="text" name="token" value={this.props.t} onChange={(event) => this.props.st(event.target.value)} />
+    <input type="text" name="token" value={this.props.t} onChange={(event) => this.handleChange(event,this.props.st(event.target.value))} />
   </label>
   <label>
     Start_date:
-    <input type="text" name="start" value={this.props.s} onChange={(event) => this.props.ss(event.target.value)} />
+    <input type="text" name="start" value={this.props.s} onChange={(event) => this.handleChange(event,this.props.ss(event.target.value))} />
   </label>
   <label>
     End_date:
-    <input type="text" name="end" value={this.props.e} onChange={(event) => this.props.se(event.target.value)} />
+    <input type="text" name="end" value={this.props.e} onChange={(event) => this.handleChange(event,this.props.se(event.target.value))} />
   </label>
   <input type="submit" value="Submit" />
 </form>
