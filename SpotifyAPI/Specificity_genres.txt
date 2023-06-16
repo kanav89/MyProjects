@@ -1,0 +1,9 @@
+Genres = happy, gloomy, party
+
+
+happy - target_acousticness = 0.3
+        target_dancebility = 0.6
+        target_energy = 0.6
+        min_liveness = 0.6
+        min_tempo = 140
+        
