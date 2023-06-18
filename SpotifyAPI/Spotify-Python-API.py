@@ -3,9 +3,20 @@ import os
 import base64
 from requests import post, get
 import json
+from flask import Flask
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def flaskpy():
+    return fin
+
 
 load_dotenv()
 
+fin = ""
 min_dancebility = 0
 min_tempo = 0
 min_valence = 0
@@ -95,4 +106,4 @@ songs = get_recommendations(token, artist_id, genre,
                             min_valence, max_valence, min_dancebility, max_dancebility, min_tempo)
 l = songs["tracks"]
 for i in l:
-    print(i["name"]+" by "+i["artists"][0]["name"])
+    fin = i["name"]+" by "+i["artists"][0]["name"]+"\n"
