@@ -3,15 +3,6 @@ import os
 import base64
 from requests import post, get
 import json
-from flask import Flask
-
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def hello():
-    return fin
 
 
 load_dotenv()
