@@ -63,11 +63,10 @@ def get_auth_header(token):
 
 
 def search_for_artist(token, artist_name):
-    url = "https://api.spotify.com/v1/search"
+    url = "https://api.spotify.com/v1/search?q={artist_name}&type=artist&limit=1"
     headers = get_auth_header(token)
 
-    query_url = url + query
-    result = get(query_url, headers=headers)
+    result = get(url, headers=headers)
     json_result = json.loads(result.content)["artists"]["items"]
     if len(json_result) == 0:
         return None
