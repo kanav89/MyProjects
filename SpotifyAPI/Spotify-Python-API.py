@@ -11,8 +11,8 @@ fin = ""
 min_dancebility = 0
 min_tempo = 0
 min_valence = 0
-max_valence = 0
-max_dancebility = 0
+max_valence = 10
+max_dancebility = 10
 
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
@@ -40,7 +40,11 @@ elif mood == "sad":
     min_tempo = 100
 
 else:
-    print("Not Valid")
+    min_dancebility = 0
+    min_tempo = 0
+    min_valence = 0
+    max_valence = 10
+    max_dancebility = 10
 
 
 def get_token():
@@ -65,7 +69,7 @@ def get_auth_header(token):
 
 
 def search_for_artist(token, artist_name):
-    url = "https://api.spotify.com/v1/search?q={artist_name}&type=artist&limit=1"
+    url = f"https://api.spotify.com/v1/search?q={artist_name}&type=artist&limit=1"
     headers = get_auth_header(token)
 
     result = get(url, headers=headers)
@@ -79,7 +83,7 @@ def search_for_artist(token, artist_name):
 def get_recommendations(token, artist_id, seed_genre, min_valence, max_valence, min_dancebility,
                         max_dancebility, min_tempo):
 
-    url = f"https://api.spotify.com/v1/recommendations?limit=10&seed_artists={artist_id}&seed_genre={seed_genre}&min_valence=\
+    url = f"https://api.spotify.com/v1/recommendations?limit=15&seed_artists={artist_id}&seed_genre={seed_genre}&min_valence=\
         {min_valence}&max_valence={max_valence}&min_dancebility={min_dancebility}&\
             max_dancebility={max_dancebility}&min_tempo={min_tempo}"
 
@@ -97,4 +101,4 @@ songs = get_recommendations(token, artist_id, genre,
                             min_valence, max_valence, min_dancebility, max_dancebility, min_tempo)
 l = songs["tracks"]
 for i in l:
-    fin = i["name"]+" by "+i["artists"][0]["name"]+"\n"
+    print(i["name"]+" by "+i["artists"][0]["name"]+"\n")
