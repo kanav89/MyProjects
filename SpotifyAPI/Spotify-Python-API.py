@@ -1,11 +1,11 @@
-from dotenv import load_dotenv
-import os
 import base64
 from requests import post, get
 import json
 
 
-load_dotenv()
+client_id = "3cf5e65e6d9c49ed95057b5d4beaaf9f"
+client_secret = "3276739117f946e19c6695e8a925575e"
+
 
 fin = ""
 min_dancebility = 0
@@ -14,8 +14,7 @@ min_valence = 0
 max_valence = 10
 max_dancebility = 10
 
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+
 artist_na = input("enter artist name:")
 artist_na2 = input("enter another artist")
 genre = input("enter genre")
