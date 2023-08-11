@@ -12,7 +12,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceRoot}",
-            // "args": [ "Vansh-Coder", "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" ]
+            //"args": [ "Vansh-Coder", "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" ]
         }
     ]
 }
