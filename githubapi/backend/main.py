@@ -5,7 +5,7 @@ import sys
 from pprint import pprint  # not required, can remove later
 from datetime import datetime, timedelta
 import argparse
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 github_app = Flask(__name__)
@@ -22,7 +22,8 @@ class Contributions(Resource):
             token = args.get('token')
             start_date = args.get('start_date')
             end_date = args.get('end_date')
-            # if username is None : raise error
+
+        # if username is None : raise error
 
         self.username = username
         self.token = token
@@ -152,9 +153,9 @@ class Contributions(Resource):
             if di in self.contributions.keys():
                 self.contributions[di] += 1
 
-        response = jsonify(list(self.contributions.values()))
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
+        response = (list(self.contributions.values()))
+        # response.headers.add('Access-Control-Allow-Origin', '*')
+        return response, 200
 
 
 github_api.add_resource(Contributions, '/contributions')
