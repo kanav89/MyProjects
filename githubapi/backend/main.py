@@ -22,8 +22,7 @@ class Contributions(Resource):
             token = args.get('token')
             start_date = args.get('start_date')
             end_date = args.get('end_date')
-
-        # if username is None : raise error
+            # if username is None : raise error
 
         self.username = username
         self.token = token
@@ -153,9 +152,8 @@ class Contributions(Resource):
             if di in self.contributions.keys():
                 self.contributions[di] += 1
 
-        response = (list(self.contributions.values()))
-        # response.headers.add('Access-Control-Allow-Origin', '*')
-        return response, 200
+        # printing output
+        return list(self.contributions.values()), 200
 
 
 github_api.add_resource(Contributions, '/contributions')
