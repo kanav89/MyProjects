@@ -2,21 +2,22 @@
 
 import requests
 import sys
-from pprint import pprint  # not required, can remove later
 from datetime import datetime, timedelta
 import argparse
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 
 github_app = Flask(__name__)
 github_api = Api(github_app)
+
+# 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
 
 
 class Contributions(Resource):
 
     def __init__(self, username='', token='', start_date='', end_date=''):
 
-        if username == token == start_date == end_date == '':
+        if username == start_date == end_date == '':
             args = request.args
             username = args.get('username')
             token = args.get('token')
@@ -152,8 +153,9 @@ class Contributions(Resource):
             if di in self.contributions.keys():
                 self.contributions[di] += 1
 
-        # printing output
-        return list(self.contributions.values()), 200
+        response = jsonify(list(self.contributions.values()))
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 
 github_api.add_resource(Contributions, '/contributions')
@@ -181,7 +183,7 @@ if __name__ == '__main__':
     if not (args.cli):
         github_app.run()
     else:
-        c = Contributions(username, token, start_date, end_date)
+        c = Contributions(username, start_date, end_date)
         l, e = c.get()
         if e == 200:
             print(l)
