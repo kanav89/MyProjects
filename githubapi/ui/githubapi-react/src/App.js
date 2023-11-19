@@ -9,27 +9,35 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = () => {
-    setLoading(true);
-    setError(null);
+  const handleSubmit = async () => {
+  console.log('Submitting...');
+  setLoading(true);
+  setError(null);
 
-    const apiUrl = `/contributions?username=${name}&token=${token}&start_date=${sd}&end_date=${ed}`;
+  const apiUrl = `/contributions?username=${name}&token=${token}&start_date=${sd}&end_date=${ed}`;
+  console.log('API URL:', apiUrl);
 
-    fetch(apiUrl)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .catch((error) => {
-        setError(error.message);
-        console.error('Error fetching data:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  try {
+    const res = await fetch(apiUrl);
+    console.log('Response:', res);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log('Data:', data);
+
+    setData(data);
+  } catch (error) {
+    setError(error.message);
+    console.error('Error fetching data:', error);
+  } finally {
+    setLoading(false);
+    console.log('Finished submitting');
+  }
+};
+
 
 return (
   <>
