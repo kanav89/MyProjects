@@ -6,7 +6,7 @@ WORKDIR /githubdocker
 
 
 # ADD main.py .
-COPY . .
+COPY main.py .
 
 
 # RUN pip install -r requirements.txt
