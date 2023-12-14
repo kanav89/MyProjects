@@ -53,7 +53,7 @@ return (
     {loading && <p>Loading...</p>}
     {error && <p style={{ color: 'red' }}>{error}</p>}
     {data.length > 0 && (
-      <div className='blue'>
+      <div>
         <h2>Data:</h2>
         <pre>{JSON.stringify(data, null, 2)}</pre>
         {}
