@@ -1,18 +1,30 @@
 #!/usr/local/bin/python3
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
-from datetime import datetime, timedelta
+
 import requests
 import sys
+from datetime import datetime, timedelta
+import argparse
+from flask import Flask, request, jsonify
+from flask_restful import Resource, Api
 
-github_app = FastAPI()
-
+github_app = Flask(__name__)
+github_api = Api(github_app)
 
 # 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
+# github_app.app_context().push()
 
-class Contributions:
+
+class Contributions(Resource):
 
     def __init__(self, username='', token='', start_date='', end_date=''):
+
+        if username == token == start_date == end_date == '':
+            args = request.args
+            username = args.get('username')
+            token = args.get('token')
+            start_date = args.get('start_date')
+            end_date = args.get('end_date')
+            # if username is None : raise error
 
         self.username = username
         self.token = token
@@ -142,21 +154,39 @@ class Contributions:
             if di in self.contributions.keys():
                 self.contributions[di] += 1
 
-        return list(self.contributions.values())
+        response = jsonify(list(self.contributions.values()))
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 
-result = Contributions()
+github_api.add_resource(Contributions, '/contributions')
 
+if __name__ == '__main__':
 
-@github_app.get('/contributions')
-def output(username: str, token: str, start_date: str, end_date: str):
-    print(username)
-    result.username = username
-    result.token = token
-    result.start_date = start_date
-    result.end_date = end_date
-    try:
-        r = result.get()
-        return r
-    except HTTPException as e:
-        return e
+    parser = argparse.ArgumentParser(description='Get Contributions in GitHub')
+    parser.add_argument('--cli', action=argparse.BooleanOptionalAction,
+                        required=False, default=False)
+    parser.add_argument('-u', dest='username', type=str,
+                        help="Enter Username", required=False)
+    parser.add_argument('-t', dest='token', type=str,
+                        help='Enter token', required=False)
+    parser.add_argument('-s', dest='start_date', type=str,
+                        help='Enter start date', required=False)
+    parser.add_argument('-e', dest='end_date', type=str,
+                        help='Enter end date', required=False)
+    args = parser.parse_args()
+
+    username = args.username
+    token = args.token
+    start_date = args.start_date
+    end_date = args.end_date
+
+    if not (args.cli):
+        github_app.run()
+    else:
+        c = Contributions(username, token, start_date, end_date)
+        l, e = c.get()
+        if e == 200:
+            print(l)
+        else:
+            print("Error!")
