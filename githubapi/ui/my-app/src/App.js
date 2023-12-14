@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ function App() {
   const [ed, setEd] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  var clone;
 
   const handleSubmit = async () => {
   console.log('Submitting...');
@@ -24,14 +26,21 @@ function App() {
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-
+    const contentType = res.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      const responseText = await res.text();
+      console.log('Non-JSON response:', responseText);
+      throw new Error('Response is not in JSON format');
+    }
     const data = await res.json();
     console.log('Data:', data);
+    
 
     setData(data);
   } catch (error) {
     setError(error.message);
     console.error('Error fetching data:', error);
+    console.log('error');
   } finally {
     setLoading(false);
     console.log('Finished submitting');
@@ -50,7 +59,7 @@ return (
     {loading && <p>Loading...</p>}
     {error && <p style={{ color: 'red' }}>{error}</p>}
     {data.length > 0 && (
-      <div>
+      <div className='blue'>
         <h2>Data:</h2>
         <pre>{JSON.stringify(data, null, 2)}</pre>
         {}

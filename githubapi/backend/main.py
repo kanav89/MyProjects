@@ -157,6 +157,6 @@ def output(username: str, token: str, start_date: str, end_date: str):
     result.end_date = end_date
     try:
         r = result.get()
-        return r
+        return JSONResponse(content=r)
     except HTTPException as e:
-        return e
+        return JSONResponse(content=e)
