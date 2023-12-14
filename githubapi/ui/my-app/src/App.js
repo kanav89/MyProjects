@@ -9,7 +9,7 @@ function App() {
   const [ed, setEd] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  var clone;
+ 
 
   const handleSubmit = async () => {
   console.log('Submitting...');
@@ -25,12 +25,6 @@ function App() {
 
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-    const contentType = res.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      const responseText = await res.text();
-      console.log('Non-JSON response:', responseText);
-      throw new Error('Response is not in JSON format');
     }
     const data = await res.json();
     console.log('Data:', data);
