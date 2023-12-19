@@ -1,11 +1,9 @@
 #!/usr/local/bin/python3
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
+
 from datetime import datetime, timedelta
 import requests
 import sys
-
-github_app = FastAPI()
+import json
 
 
 # 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
@@ -73,6 +71,8 @@ class Contributions:
             user_date = user_response['created_at'][:10]
             if user_date in self.contributions.keys():
                 self.contributions[user_date] += 1
+        else:
+            print("failed")
 
         # checking repos created in timeframe
         repo_url = f"https://api.github.com/user/repos?since={self.DATE_SINCE}&type=owner"
@@ -85,6 +85,8 @@ class Contributions:
                     continue
                 if repo_date in self.contributions.keys():
                     self.contributions[repo_date] += 1
+        else:
+            print("failed")
 
         # fetching all repos
         all_repos_url = "https://api.github.com/user/repos"
@@ -145,14 +147,12 @@ class Contributions:
         return list(self.contributions.values())
 
 
-result = Contributions()
+p = Contributions(
+    "kanav89", "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", "2022-12-01", "2022-12-31")
+# p.username = "kanav89"
+# p.token = "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"
+# p.start_date = "2022-12-01"
+# p.end_date = "2022-12-31"
+result = p.get()
 
-
-@github_app.get('/contributions')
-def output(username: str, token: str, start_date: str, end_date: str):
-    result = Contributions(username, token, start_date, end_date)
-    try:
-        r = result.get()
-        return JSONResponse(content=r)
-    except HTTPException as e:
-        return JSONResponse(content=e)
+print(result)
