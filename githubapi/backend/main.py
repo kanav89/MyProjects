@@ -8,7 +8,7 @@ import sys
 github_app = FastAPI()
 
 
-# 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
+# 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
 
 class Contributions:
 

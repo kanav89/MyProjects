@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities; */
 
+.checkb{
+  margin-left: 100px;
+}
 
+/* .label{
+  padding: 5px;
+} */
 body {
   height: 100%;
   margin: 0;
