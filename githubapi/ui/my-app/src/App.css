@@ -2,13 +2,10 @@
 @tailwind components;
 @tailwind utilities; */
 
-.checkb{
-  margin-left: 100px;
+.check{
+  margin-left: 10px;
 }
 
-/* .label{
-  padding: 5px;
-} */
 body {
   height: 100%;
   margin: 0;
@@ -22,9 +19,11 @@ html, body, #root {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: black;
 
 }
-input{
+.second{
+  margin-top: 50px;
   margin-left: 80px;
 }
 
@@ -32,23 +31,35 @@ input{
     margin-top:10px;
 }
 
-.output{
-    margin-left: 500px;
-}
+
 
 button{
     margin-top: 10px;
-    margin-left: 80px;
+   
 }
+/* 
+.chart{
+  justify-content: right;
+  padding-left: 600px;
+  
+} */
 
 h1{
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: 10;
+    color: antiquewhite;
 }
 
-img {
-  border: 1px solid #0e0c0c;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
+h2{
+    font-size: large;
+    font-weight: 10;
+    color: antiquewhite;
 }
+
+/* LineChart{
+  padding-left: 200px;
+} */
+
+/* Label{
+  color: antiquewhite;
+} */
