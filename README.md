@@ -1,4 +1,4 @@
-# Welcome to my Github! I am a sophomore studying computer science. I am continuoulsy working on new projects and trying to imporve the existing ones. 
+# Welcome to my Github! I am a sophomore studying computer science. I am continuoulsy working on new projects and trying to improve the existing ones. 
 
  MyProjects
  
