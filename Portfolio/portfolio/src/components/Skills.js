@@ -2,7 +2,7 @@ import React from "react";
 import {skills} from './data'
 import { Badge } from 'flowbite-react';
 import { HiCheck } from 'react-icons/hi';
-function About(){
+function Skills(){
     return(
     <section id="skills" className="bg-white">
        <div className="container px-5 py-10 mx-auto">
@@ -36,4 +36,4 @@ function About(){
   );
 }
 
-export default About;
+export default Skills;

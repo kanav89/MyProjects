@@ -20,29 +20,25 @@ artist_na2 = input("enter another artist")
 genre = input("enter genre")
 mood = input("mood:")
 if (mood == "happy"):
+    min_valence = 0.6
+    max_valence = 1
+    min_dancebility = 0.5
+    max_dancebility = 0.8
+elif (mood == "dance"):
     min_valence = 0.8
     max_valence = 1
     min_dancebility = 0.7
-    max_dancebility = 0.8
-    min_tempo = 120
-elif (mood == "dance"):
-    min_valence = 0.6
-    max_valence = 1
-    min_dancebility = 0.9
     max_dancebility = 1
-    min_tempo = 135
 elif mood == "sad":
-    min_valence = 0.2
-    max_valence = 0.5
+    min_valence = 0.0
+    max_valence = 0.4
     min_dancebility = 0.2
-    max_dancebility = 0.4
-    min_tempo = 100
+    max_dancebility = 0.5
 
 else:
     min_dancebility = 0
-    min_tempo = 0
     min_valence = 0
-    max_valence = 10
+    max_valence = 10   
     max_dancebility = 10
 
 
@@ -69,9 +65,9 @@ def get_auth_header(token):
 
 def search_for_artist(token, artist_name):
     url = f"https://api.spotify.com/v1/search?q={artist_name}&type=artist&limit=1"
-    headers = get_auth_header(token)
+    header = get_auth_header(token)
 
-    result = get(url, headers=headers)
+    result = get(url, headers=header)
     json_result = json.loads(result.content)["artists"]["items"]
     if len(json_result) == 0:
         return None
@@ -80,24 +76,23 @@ def search_for_artist(token, artist_name):
 
 
 def get_recommendations(token, artist_id, seed_genre, min_valence, max_valence, min_dancebility,
-                        max_dancebility, min_tempo):
+                        max_dancebility):
 
     url = f"https://api.spotify.com/v1/recommendations?limit=15&seed_artists={artist_id}&seed_genre={seed_genre}&min_valence=\
         {min_valence}&max_valence={max_valence}&min_dancebility={min_dancebility}&\
-            max_dancebility={max_dancebility}&min_tempo={min_tempo}"
+            max_dancebility={max_dancebility}&market=IN"
 
-    headers = get_auth_header(token)
-    result = get(url, headers=headers)
+    header = get_auth_header(token)
+    result = get(url, headers=header)
     json_result = json.loads(result.content)
     return json_result
-
 
 token = get_token()
 result = search_for_artist(token, artist_na)
 result2 = search_for_artist(token, artist_na2)
 artist_id = result["id"]+","+result2["id"]
 songs = get_recommendations(token, artist_id, genre,
-                            min_valence, max_valence, min_dancebility, max_dancebility, min_tempo)
+                            min_valence, max_valence, min_dancebility, max_dancebility)
 l = songs["tracks"]
 for i in l:
     print(i["name"]+" by "+i["artists"][0]["name"]+"\n")

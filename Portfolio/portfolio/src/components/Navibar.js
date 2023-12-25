@@ -4,22 +4,6 @@ import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarToggle } from 'flowb
 import logo from "./p.jpg";
 
 
-const scrollToAboutSection = () => {
-    const aboutSection = document.getElementById("about");
-
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-};
-
-const scrollToSkillsSection = () => {
-    const skillsSection = document.getElementById("skills");
-
-    if (skillsSection) {
-      skillsSection.scrollIntoView({ behavior: "smooth" });
-    }
-};
-
 
 function Navibar() {
   return (
@@ -36,18 +20,18 @@ function Navibar() {
             Home
           </Button>
         
-          <Button href="#" onClick={scrollToAboutSection}>
+          <Button href="#about" >
             About
           </Button>
         
           
-          <Button href="#" onClick={scrollToSkillsSection}>
+          <Button href="#skills" >
             Skills
           </Button>
-          <Button href="#">
+          <Button href="#project">
             Projects
           </Button>
-          <Button href="#">
+          <Button href="#contact">
             Contact
           </Button>
         </NavbarCollapse>
