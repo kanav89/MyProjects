@@ -5,7 +5,7 @@ function First(){
 
     return(
         <div class="firstdiv">
-            <h1>Welcome! Get a personalized playlist based on your mood.</h1>
+            <h1 class='heading'>Welcome! Get a personalized playlist based on your mood.</h1>
         </div>
     )
 }

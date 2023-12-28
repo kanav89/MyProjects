@@ -35,11 +35,11 @@ class SongRecommendation:
         return self.token
 
     def initialize(self):
-        if self.mood == "happy":
+        if self.mood == "Happy":
             self.min_valence, self.max_valence, self.min_dancebility, self.max_dancebility = 0.6, 1, 0.5, 0.8
-        elif self.mood == "dance":
+        elif self.mood == "Dance":
             self.min_valence, self.max_valence, self.min_dancebility, self.max_dancebility = 0.8, 1, 0.8, 1
-        elif self.mood == "sad":
+        elif self.mood == "Sad":
             self.min_valence, self.max_valence, self.min_dancebility, self.max_dancebility = 0.0, 0.4, 0.2, 0.5
         else:
             self.min_dancebility, self.min_valence, self.max_valence, self.max_dancebility = 0, 0, 10, 10
@@ -89,10 +89,12 @@ def output(artist_na: str, artist_na2: str, genre: str, mood: str):
         )
         result = []
         strr=""
+        x = 1
         for i in songs["tracks"]:
-            strr =i["name"] + " by " + i["artists"][0]["name"]
+            y = str(x)
+            strr = y + ". "+i["name"] + " by " + i["artists"][0]["name"]
             result.append(strr)
-
+            x+=1
         return JSONResponse(content=result)
     
     except HTTPException as e:
