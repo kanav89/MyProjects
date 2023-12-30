@@ -91,9 +91,10 @@ def output(artist_na: str, artist_na2: str, genre: str, mood: str):
         strr=""
         x = 1
         for i in songs["tracks"]:
+            link = i["album"]["external_urls"]["spotify"]
             y = str(x)
             strr = y + ". "+i["name"] + " by " + i["artists"][0]["name"]
-            result.append(strr)
+            result.append([strr,link])
             x+=1
         return JSONResponse(content=result)
     
