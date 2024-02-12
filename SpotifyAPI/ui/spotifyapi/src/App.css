@@ -1,10 +1,10 @@
 .app{
   
-  min-height: 100vh;
-  width: 100%;
-  background: rgb(34,193,195);
+  width: 100vw;
+    height: 100vh;
+    max-width:100%; 
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-  overflow: hidden;
+  
 }
 
 .nav{
@@ -14,31 +14,6 @@
   width: 100vh;
 }
 
-.wave{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  
-}
 
 
-/* .get{
-  
-  
 
-} */
-/* .card{
-  
-  overflow-y: scroll;
-} */
-/* .card{
-  box-shadow:
-  1.7px 1.7px 2.4px rgba(0, 0, 0, 0.049),
-  4px 3.9px 5.6px rgba(0, 0, 0, 0.071),
-  7.2px 7px 10.1px rgba(0, 0, 0, 0.087),
-  11.9px 11.6px 16.7px rgba(0, 0, 0, 0.103),
-  19.6px 19px 27.5px rgba(0, 0, 0, 0.119),
-  34.2px 33.3px 48.1px rgba(0, 0, 0, 0.141),
-  74px 72px 104px rgba(0, 0, 0, 0.19)
-;
-} */

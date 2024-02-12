@@ -1,16 +1,22 @@
-.firstdiv{
+.firstdiv {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height:500px
-    
+    flex-direction: column;
+    justify-content: center; /* Centers the div horizontally */
+    align-items: center; /* Centers the div vertically */
+    height: 50vh; /* Set height to 100% of the viewport height */
+    width: 99vw;
+}
+.description{
+    font-family: titling-gothic-fb-wide, sans-serif;
+       
+    font-weight: bold;
 }
 
-.heading{
-    font-family: copperplate;
+.heading {
+    font-family: titling-gothic-fb-wide, sans-serif;
     font-weight: bold;
     color: antiquewhite;
-    font-size:100px;
+    font-size: 100px;
     -webkit-text-stroke-width: 4px;
-    /* -webkit-text-stroke-color: black; */
+    /* -webkit-text-stroke-color: blue; */
 }

@@ -21,7 +21,7 @@ function Projects(){
                     {projects.map((project) => (
                     <div className="container px-5 py-10 mx-auto text-center lg:px-40">    
                         <div className="flex h-full items-center">
-                            <Card 
+                            {/* <Card 
                                 className="max-w-sm m-4 border-gray-800 hover:opacity-100 opacity-0"
                                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                                 imgSrc={logo}
@@ -32,7 +32,7 @@ function Projects(){
                                 <p className="font-normal text-gray-700 dark:text-gray-400">
                                     Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
                                 </p>
-                            </Card>
+                            </Card> */}
                             <Card
                                 className="max-w-sm m-4 border-gray-800"
                                 imgAlt="Meaningful alt text for an image that is not purely decorative"
